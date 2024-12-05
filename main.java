@@ -729,12 +729,46 @@ public class Main {
       return lower;
   }
 } */
-/* 
-String r = "reptile";
+
+import java.util.Scanner;
+
+public class main {
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
+       
+    Owner[] Owners = new Owner[1];
+    Owners[0] = new Owner("Unnamed", "none");
+    Owners[0].changeName("Lilly");
+
+
+    Helper Zoe = new Helper("Zoe", 0);
+    Helper Marinna = new Helper("Marinna", 0);
+    Helper Sam = new Helper("Sam", 0);
+
+    Helper[] assistant = {Zoe, Marinna, Sam};
+    double[] rating = {Zoe.getRating(), Marinna.getRating(), Sam.getRating()};
+
+    double stars = Math.random();
+    assistant[0].changeRating(stars);
+    assistant[1].changeRating(stars);
+    assistant[2].changeRating(stars);
+   
+    System.out.println(Owners[0].getName() + ": Hello and welcome to our pet shop. What is your name?");
+    String response = in.nextLine();
+    Owners[0].changeName(response);
+    System.out.println(assistant[0].getName() +": Hello " + Owners[0].getName() + ", I can help you find a pet you'll love.");
+     
+     
+   
+    while(!lowerCase(response).contains("goodbye")){
+      System.out.println(assistant[1].getName() + ": Do you like mammals, reptiles, or fish better?");
+      response = in.nextLine();
+      boolean stop = true;
+      while(stop){
+        String r = "reptile";
         String f = "fish";
         String m = "mammal";
-        Bbolean duck = true;
-
+        boolean duck = true;
         if(lowerCase(response).contains(r) && lowerCase(response).contains(f)||lowerCase(response).contains(r) && lowerCase(response).contains(m)||lowerCase(response).contains(f) && lowerCase(response).contains(m)){
             System.out.println("I'm sorry, please choose just one answer.");
             response = in.nextLine();
@@ -896,6 +930,41 @@ String r = "reptile";
         response = inFish.nextLine();
       }
       else if(lowerCase(response).contains("multi")){
+        System.out.println("There are many great multicolred fish that you can keep as pets. Would your prefer a larger or small fish");
+        response = inFish.nextLine();
+        multicolored(response);
+        fishz = false;
+      }
+      else if(lowerCase(response).contains("tri")){
+        System.out.println("There are many great tricolored fish that you can keep as pets. Would your prefer a larger or a smaller fish");
+        response = inFish.nextLine();
+        tricolored(response);
+        fishz = false;
+      }
+      else if(lowerCase(response).contains("mono")){
+        System.out.println("There are many great monocolored fish that you can keep as pets. Would you prefer a larger or smaller fish");
+        response = inFish.nextLine();
+        monocolored(response);
+        fishz = false;
+      }
+      else{
+        while(fishy){
+          System.out.println("I'm sorry. Could your please repeat. Are you thinking of getting a monocolored, tricolored, or multicolored fish?");
+          response = inFish.nextLine();
+          if(lowerCase(response).contains("mono")|| lowerCase(response).contains("multi")|| lowerCase(response).contains("tri")){
+            fishy = false;
+          }
+        }
+      }
+    }
+  }
+ 
+ 
+  public static void mammal(String resp){
+    Scanner inMammal = new Scanner(System.in);
+    boolean mammalz = true;
+    boolean mammaly = true;
+    String response = resp;
     String s = "small";
     String m = "medium";
     String l = "large";
@@ -937,7 +1006,7 @@ String r = "reptile";
     }
   }
  
- String response = resp;
+ 
   public static void monocolored(String resp){
     Scanner inMonocolored = new Scanner(System.in);
     boolean monoz = true;
@@ -948,6 +1017,9 @@ String r = "reptile";
       String check = lowerCase(resp);
       if(check.contains(s) && check.contains(l)){
         System.out.println("I'm sorry, please choose just one answer.");
+        resp = inMonocolored.nextLine();
+
+
       }
       else if(lowerCase(resp).contains("small")){
         System.out.println("Small fish make great pets! Some good small monocolored are neon tetra, guppy's, betta fish, and goldfish.");
@@ -1206,12 +1278,17 @@ String r = "reptile";
           System.out.println("I'm sorry I don't understand.");
           resp = inSmall.nextLine();
           if(lowerCase(resp).contains("cat")|| lowerCase(resp).contains("rodent")|| lowerCase(resp).contains("dog")){
+            smally = false;
           }
         }
       }
     }
   }
-}
+ 
+ 
+  public static String lowerCase(String u){
+      String lower = u.toLowerCase();
+      return lower;
   }
 
-*/
+}
